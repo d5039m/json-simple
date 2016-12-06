@@ -9,6 +9,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -128,5 +129,67 @@ public class JSONObject extends HashMap implements Map, JSONAware, JSONStreamAwa
 	 */
 	public static String escape(String s){
 		return JSONValue.escape(s);
+	}
+
+	public static String prettyPrint(Object m){
+		return prettyPrint(m, 3, 0);
+	}
+
+	public static String prettyPrint(Object m, int paddingLength){
+		return prettyPrint(m,paddingLength,0);
+	}
+
+	private static String prettyPrint(Object o, int paddingLength, int indentLevel){
+		StringBuilder sb = new StringBuilder();
+
+		if(o instanceof Map){
+			sb.append("{\n");
+			int newIndentLevel = indentLevel +1;
+			Map m = (Map)o;
+			boolean first = true;
+			Iterator<Map.Entry> i = m.entrySet().iterator();
+			while(i.hasNext()){
+				if (first) {
+					first = false;
+				}else{
+					sb.append(",\n");
+				}
+				Map.Entry e = i.next();
+				sb.append(getPadding(newIndentLevel,paddingLength)).append("\"");
+				sb.append(String.valueOf(e.getKey())).append("\":");
+				sb.append(prettyPrint(e.getValue(),newIndentLevel, paddingLength));
+			}
+			sb.append("\n");
+			if(newIndentLevel > 1)
+				sb.append(getPadding(newIndentLevel - 1,paddingLength));
+			sb.append("}");
+		}else if(o instanceof List) {
+			sb.append("[\n");
+			int newIndentLevel = indentLevel + 1;
+			List l = (List)o;
+			Iterator i = l.iterator();
+			boolean first = true;
+			while (i.hasNext()){
+				if(first){
+					first = false;
+				}else{
+					sb.append(",\n");
+				}
+				Object obj = i.next();
+				sb.append(getPadding(newIndentLevel,paddingLength))
+						.append(JSONObject.prettyPrint(obj,newIndentLevel,paddingLength));
+			}
+			sb.append("\n");
+			if(newIndentLevel > 1)
+				sb.append(getPadding(newIndentLevel - 1,paddingLength));
+			sb.append("]");
+		}else{
+			sb.append(JSONValue.toJSONString(o));
+		}
+		return sb.toString();
+	}
+
+	private static String getPadding(int indentLevel, int paddingLength){
+		return String.format("%" + (indentLevel * paddingLength) + "s%s","","");
 	}
 }

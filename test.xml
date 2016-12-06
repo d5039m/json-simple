@@ -41,7 +41,7 @@
 		<junit>
 			<classpath refid="runtime.path"/>
 			<formatter type="plain"/>
-			<test name="org.json.simple.Test"/>
+			<test name="org.json.simple.ParseTest"/>
 			<test name="org.json.simple.parser.YylexTest"/>
 		</junit>
 	</target>

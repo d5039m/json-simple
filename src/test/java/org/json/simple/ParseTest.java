@@ -24,7 +24,7 @@ import org.json.simple.parser.ParseException;
 /**
  * @author FangYidong<fangyidong@yahoo.com.cn>
  */
-public class Test extends TestCase{
+public class ParseTest extends TestCase{
 
 	public void testDecode() throws Exception{
 		System.out.println("=======decode=======");
