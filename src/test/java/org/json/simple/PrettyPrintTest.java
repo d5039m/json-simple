@@ -21,9 +21,9 @@ public class PrettyPrintTest {
         m.put("three",3);
         System.out.println(JSONObject.prettyPrint(m));
         Assert.assertEquals("{\n" +
-                "    \"one\":1,\n" +
-                "    \"two\":2,\n" +
-                "    \"three\":3\n" +
+                "   \"one\":1,\n" +
+                "   \"two\":2,\n" +
+                "   \"three\":3\n" +
                 "}",JSONObject.prettyPrint(m));
     }
 
@@ -36,10 +36,10 @@ public class PrettyPrintTest {
         l.add(new Boolean(false));
         System.out.println(JSONObject.prettyPrint(l));
         Assert.assertEquals("[\n" +
-                "    1,\n" +
-                "    \"two\",\n" +
-                "    3.141529,\n" +
-                "    false\n" +
+                "   1,\n" +
+                "   \"two\",\n" +
+                "   3.141529,\n" +
+                "   false\n" +
                 "]",JSONObject.prettyPrint(l));
     }
 
@@ -54,12 +54,12 @@ public class PrettyPrintTest {
         m.put("list",l);
         System.out.println(JSONObject.prettyPrint(m));
         Assert.assertEquals("{\n" +
-                "    \"list\":[\n" +
-                "        false,\n" +
-                "        2,\n" +
-                "        \"three\"\n" +
-                "    ],\n" +
-                "    \"key\":\"value\"\n" +
+                "   \"list\":[\n" +
+                "      false,\n" +
+                "      2,\n" +
+                "      \"three\"\n" +
+                "   ],\n" +
+                "   \"key\":\"value\"\n" +
                 "}",JSONObject.prettyPrint(m));
 
     }
@@ -74,11 +74,11 @@ public class PrettyPrintTest {
         m.put("list",l);
         System.out.println(JSONObject.prettyPrint(m));
         Assert.assertEquals("{\n" +
-                "    \"list\":[\n" +
-                "        false,\n" +
-                "        2,\n" +
-                "        \"three\"\n" +
-                "    ]\n" +
+                "   \"list\":[\n" +
+                "      false,\n" +
+                "      2,\n" +
+                "      \"three\"\n" +
+                "   ]\n" +
                 "}",JSONObject.prettyPrint(m));
     }
 
@@ -90,9 +90,9 @@ public class PrettyPrintTest {
         l.add("three    ");
         System.out.println(JSONObject.prettyPrint(l));
         Assert.assertEquals("[\n" +
-                "    false,\n" +
-                "    2,\n" +
-                "    \"three    \"\n" +
+                "   false,\n" +
+                "   2,\n" +
+                "   \"three    \"\n" +
                 "]",JSONObject.prettyPrint(l));
     }
 
@@ -113,9 +113,17 @@ public class PrettyPrintTest {
                 "   [\n" +
                 "      1\n" +
                 "   ]\n" +
-                "]\n",JSONObject.prettyPrint(l1));
+                "]",JSONObject.prettyPrint(l1));
     }
 
+
+    @Test
+    public void testArray(){
+        JSONObject json = new JSONObject();
+        json.put("test", new int[] {1,2,3});
+        System.out.println(json);
+        System.out.println(JSONObject.prettyPrint(json));
+    }
 
 
 

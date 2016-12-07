@@ -139,6 +139,13 @@ public class JSONObject extends HashMap implements Map, JSONAware, JSONStreamAwa
 		return prettyPrint(m,paddingLength,0);
 	}
 
+    /**
+     * Turns a  JSONObject into a pretty printed json String.
+     * @param Object to be Serialised
+     * @param paddingLength
+     * @param indentLevel
+     * @return
+     */
 	private static String prettyPrint(Object o, int paddingLength, int indentLevel){
 		StringBuilder sb = new StringBuilder();
 
