@@ -96,6 +96,27 @@ public class PrettyPrintTest {
                 "]",JSONObject.prettyPrint(l));
     }
 
+    @Test
+    public void testListOfList(){
+        List l1 = new ArrayList();
+        List l2 = new ArrayList();
+        l1.add(false);
+        l1.add(2);
+        l1.add("three");
+        l2.add(1);
+        l1.add(l2);
+        System.out.println(JSONObject.prettyPrint(l1));
+        Assert.assertEquals("[\n" +
+                "   false,\n" +
+                "   2,\n" +
+                "   \"three\",\n" +
+                "   [\n" +
+                "      1\n" +
+                "   ]\n" +
+                "]\n",JSONObject.prettyPrint(l1));
+    }
+
+
 
 
 }
