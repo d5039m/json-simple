@@ -157,7 +157,7 @@ public class JSONObject extends HashMap implements Map, JSONAware, JSONStreamAwa
 				Map.Entry e = i.next();
 				sb.append(getPadding(newIndentLevel,paddingLength)).append("\"");
 				sb.append(String.valueOf(e.getKey())).append("\":");
-				sb.append(prettyPrint(e.getValue(),newIndentLevel, paddingLength));
+				sb.append(prettyPrint(e.getValue(),paddingLength, newIndentLevel));
 			}
 			sb.append("\n");
 			if(newIndentLevel > 1)
@@ -166,7 +166,7 @@ public class JSONObject extends HashMap implements Map, JSONAware, JSONStreamAwa
 		}else if(o instanceof List) {
 			sb.append("[\n");
 			int newIndentLevel = indentLevel + 1;
-			List l = (List)o;
+			List l = (List) o;
 			Iterator i = l.iterator();
 			boolean first = true;
 			while (i.hasNext()){
@@ -177,7 +177,7 @@ public class JSONObject extends HashMap implements Map, JSONAware, JSONStreamAwa
 				}
 				Object obj = i.next();
 				sb.append(getPadding(newIndentLevel,paddingLength))
-						.append(JSONObject.prettyPrint(obj,newIndentLevel,paddingLength));
+                        .append(JSONObject.prettyPrint(obj,paddingLength,newIndentLevel));
 			}
 			sb.append("\n");
 			if(newIndentLevel > 1)
