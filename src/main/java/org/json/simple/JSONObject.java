@@ -131,6 +131,10 @@ public class JSONObject extends HashMap implements Map, JSONAware, JSONStreamAwa
 		return JSONValue.escape(s);
 	}
 
+	public String prettyPrint(){
+		return JSONObject.prettyPrint(this);
+	}
+
 	public static String prettyPrint(Object m){
 		return prettyPrint(m, 3, 0);
 	}

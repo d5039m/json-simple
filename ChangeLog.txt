@@ -1,8 +1,9 @@
 ChangeLog
 
-Version 1.2.0 (2016/12/05)
-*Add pretty printing to JSONObject - Matthew Salt
-*Add pretty printing tests - Matthew Salt
+Version 1.2.0 (2016/12/07)
+* Add pretty printing to JSONObject - Matthew Salt
+* Add pretty printing tests - Matthew Salt
+* Rename Test to ParseTest to resolve JUnit namespace clash
 
 Version 1.1.1 (2012/01/29)
 * Supports OSGi
